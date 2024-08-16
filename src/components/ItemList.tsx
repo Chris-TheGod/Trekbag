@@ -1,41 +1,31 @@
-const initialItems = [
-  {
-    name: 'good mood',
-    packed: true,
-  },
-  {
-    name: 'passport',
-    packed: false,
-  },
-  {
-    name: 'phone charger',
-    packed: false,
-  },
-];
+import { useState } from 'react';
+import { initialItems } from '../lib/constants.ts';
+
+type ItemType = {
+  name: string;
+  packed: boolean;
+};
 
 export default function ItemList() {
+  const [items, setItems] = useState(initialItems);
+
   return (
     <ul>
-      {initialItems.map((item) => {
-        return <Item key={item.name} item={item} />;
+      {items.map(({ name, packed }: ItemType) => {
+        return <Item key={name} name={name} packed={packed} />;
       })}
     </ul>
   );
 }
 
-type ItemProps = {
-  item: {
-    name: string;
-    packed: boolean;
-  };
-};
-
-function Item({ item }: ItemProps) {
+function Item({ name, packed }: ItemType) {
   return (
     <li className='item'>
       <label>
-        <input type='checkbox' checked={item.packed} /> {item.name}
+        <input type='checkbox' checked={packed} /> {name}
       </label>
+
+      <button>❌</button>
     </li>
   );
 }
