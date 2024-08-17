@@ -17,6 +17,19 @@ export default function AddItemForm({ setItems }: AddItemFormProps) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
+
+        if (!itemText) {
+          alert(`Item can't be empty`);
+          return;
+        }
+
+        const newItem = {
+          id: new Date().getTime(),
+          name: itemText,
+          packed: false,
+        };
+
+        setItems((prev) => [...prev, newItem]);
       }}
     >
       <h2>Add an item</h2>
