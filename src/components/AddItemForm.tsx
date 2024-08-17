@@ -1,10 +1,31 @@
+import { useState } from 'react';
 import Button from './Button';
 
-export default function AddItemForm() {
+type ItemType = {
+  name: string;
+  packed: boolean;
+};
+
+type AddItemFormProps = {
+  setItems: React.Dispatch<React.SetStateAction<ItemType[]>>;
+};
+
+export default function AddItemForm({ setItems }: AddItemFormProps) {
+  const [itemText, setItemText] = useState('');
+
   return (
-    <form>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       <h2>Add an item</h2>
-      <input />
+      <input
+        value={itemText}
+        onChange={(e) => {
+          setItemText(e.target.value);
+        }}
+      />
       <Button>Add to list</Button>
     </form>
   );

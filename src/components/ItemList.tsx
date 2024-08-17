@@ -1,14 +1,13 @@
-import { useState } from 'react';
-import { initialItems } from '../lib/constants.ts';
-
 type ItemType = {
   name: string;
   packed: boolean;
 };
 
-export default function ItemList() {
-  const [items, setItems] = useState(initialItems);
+type ItemListType = {
+  items: ItemType[];
+};
 
+export default function ItemList({ items }: ItemListType) {
   return (
     <ul>
       {items.map(({ name, packed }: ItemType) => {
