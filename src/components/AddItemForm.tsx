@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import Button from './Button';
 
-type ItemType = {
-  name: string;
-  packed: boolean;
-};
+import { ItemType } from '../lib/types';
 
 type AddItemFormProps = {
   setItems: React.Dispatch<React.SetStateAction<ItemType[]>>;
@@ -23,7 +20,7 @@ export default function AddItemForm({ setItems }: AddItemFormProps) {
           return;
         }
 
-        const newItem = {
+        const newItem: ItemType = {
           id: new Date().getTime(),
           name: itemText,
           packed: false,

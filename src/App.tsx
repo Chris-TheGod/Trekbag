@@ -5,11 +5,7 @@ import Header from './components/Header';
 import ItemList from './components/ItemList';
 import Sidebar from './components/Sidebar';
 import { initialItems } from './lib/constants';
-
-type ItemType = {
-  name: string;
-  packed: boolean;
-};
+import { ItemType } from './lib/types';
 
 function App() {
   const [items, setItems] = useState<ItemType[]>(initialItems);

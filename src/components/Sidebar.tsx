@@ -1,10 +1,7 @@
 import AddItemForm from './AddItemForm';
 import ButtonGroup from './ButtonGroup';
 
-type ItemType = {
-  name: string;
-  packed: boolean;
-};
+import { ItemType } from '../lib/types';
 
 type SidebarProps = {
   setItems: React.Dispatch<React.SetStateAction<ItemType[]>>;
